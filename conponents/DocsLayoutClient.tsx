@@ -1,19 +1,19 @@
 'use client'
 
 import '@douyinfe/semi-ui/dist/css/semi.min.css'
-import { getDocsList } from '@/lib/docs';
 
 import {usePathname, useRouter} from 'next/navigation'
-import { Layout, Nav, Button, Breadcrumb, Skeleton, Avatar } from '@douyinfe/semi-ui';
-import {
-    IconBell, IconHelpCircle, IconBytedanceLogo, IconHome, IconHistogram, IconLive, IconSetting, IconSemiLogo,
-    IconFile
-} from '@douyinfe/semi-icons';
+import {Avatar, Button, Layout, Nav} from '@douyinfe/semi-ui';
+import {IconBell, IconBytedanceLogo, IconFile, IconHelpCircle, IconSemiLogo} from '@douyinfe/semi-icons';
+import {DocItem} from "@/lib/docs";
 
-interface DocItem {
-    slug: string;
-    title: string;
-}
+
+/**
+ * 主页的 layout 配置客户端
+ * @param children
+ * @param docs
+ * @constructor
+ */
 export default function DocsLayoutClient({
                                              children,
                                              docs

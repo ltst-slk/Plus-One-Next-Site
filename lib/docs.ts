@@ -1,10 +1,20 @@
-// lib/docs.ts
-import { promises as fs } from 'fs';
+import {promises as fs} from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-export async function getDocsList() {
-    const postsDirectory = path.join(process.cwd(), 'content/posts/');
+/**
+ * 文档 Item
+ */
+export interface DocItem {
+    slug: string;
+    title: string;
+}
+
+/**
+ * 获取目标目录下的 素有 mdx 文件 生成 文档列表
+ */
+export async function getDocsList(filePath: string): Promise<DocItem[]> {
+    const postsDirectory = path.join(process.cwd(), filePath);
     const files = await fs.readdir(postsDirectory);
 
     const docs = await Promise.all(

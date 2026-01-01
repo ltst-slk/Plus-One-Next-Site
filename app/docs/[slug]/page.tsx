@@ -1,7 +1,7 @@
-import { compileMDX } from 'next-mdx-remote/rsc';
-import { promises as fs } from 'fs';
+import {compileMDX} from 'next-mdx-remote/rsc';
+import {promises as fs} from 'fs';
 import path from 'path';
-import { notFound } from 'next/navigation';
+import {notFound} from 'next/navigation';
 
 // 1. 独立获取数据的函数
 async function getPost(slug: string) {
