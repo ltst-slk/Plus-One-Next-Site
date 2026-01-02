@@ -2,11 +2,12 @@ import {compileMDX} from 'next-mdx-remote/rsc';
 import {promises as fs} from 'fs';
 import path from 'path';
 import {notFound} from 'next/navigation';
+import {docsDir} from "@/lib/docs";
 
 // 1. 独立获取数据的函数
 async function getPost(slug: string) {
     try {
-        const filePath = path.join(process.cwd(), 'content/posts/', `${slug}.mdx`);
+        const filePath = path.join(process.cwd(), docsDir, `${slug}.mdx`);
         const source = await fs.readFile(filePath, 'utf8');
 
         const { content, frontmatter } = await compileMDX({
@@ -22,7 +23,7 @@ async function getPost(slug: string) {
 }
 
 export async function generateStaticParams() {
-    const postsDirectory = path.join(process.cwd(), 'content/posts/');
+    const postsDirectory = path.join(process.cwd(), docsDir);
     const files = await fs.readdir(postsDirectory);
 
     return files

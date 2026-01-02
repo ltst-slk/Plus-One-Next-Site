@@ -24,3 +24,15 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+img {
+  max-width: 100%;
+  height: auto;
+}
+/* 确保代码块内的内容不超过容器宽度 */
+pre code {
+  white-space: pre-wrap;       /* 保持空白符序列，但是正常地进行换行 */
+  word-wrap: break-word;       /* 在长单词或URL地址内部进行换行操作 */
+  overflow-wrap: break-word;   /* 允许长单词或URL地址换行到下一行 */
+  max-width: 100%;             /* 设置最大宽度为100% */
+}
+

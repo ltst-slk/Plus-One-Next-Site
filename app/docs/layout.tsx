@@ -1,4 +1,4 @@
-import {getDocsList} from '@/lib/docs';
+import {docsDir, getDocsList} from '@/lib/docs';
 import DocsLayoutClient from '@/conponents/DocsLayoutClient';
 
 /**
@@ -7,7 +7,7 @@ import DocsLayoutClient from '@/conponents/DocsLayoutClient';
  * @constructor
  */
 export default async function Layout({ children }: { children: React.ReactNode }) {
-    const docs = await getDocsList('content/posts/');
+    const docs = await getDocsList(docsDir);
     // 将从文件系统读取的文档列表传给侧边栏
     return <DocsLayoutClient docs={docs}>{children}</DocsLayoutClient>;
 }

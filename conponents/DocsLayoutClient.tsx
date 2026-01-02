@@ -1,11 +1,11 @@
 'use client'
 
 import '@douyinfe/semi-ui/dist/css/semi.min.css'
-import { usePathname, useRouter } from 'next/navigation'
-import { Avatar, Button, Layout, Nav } from '@douyinfe/semi-ui';
-import { IconBell, IconBytedanceLogo, IconFile, IconHelpCircle, IconSemiLogo } from '@douyinfe/semi-icons';
-import { DocItem } from "@/lib/docs";
-import { useState } from 'react';
+import {usePathname, useRouter} from 'next/navigation'
+import {Avatar, Button, Layout, Nav} from '@douyinfe/semi-ui';
+import {IconBell, IconBytedanceLogo, IconFile, IconHelpCircle, IconSemiLogo} from '@douyinfe/semi-icons';
+import {DocItem} from "@/lib/docs";
+import {useState} from 'react';
 
 export default function DocsLayoutClient({
                                              children,
@@ -23,13 +23,13 @@ export default function DocsLayoutClient({
     const navItems = docs.map(doc => ({
         itemKey: `/docs/${doc.slug}`,
         text: doc.title,
-        icon: <IconFile />
+        icon: <IconFile/>
     }));
 
-    const { Header, Footer, Sider, Content } = Layout;
+    const {Header, Footer, Sider, Content} = Layout;
 
     return (
-        <div style={{ width: '100vw', height: '100vh', overflow: 'hidden' }}>
+        <div style={{width: '100vw', height: '100vh', overflow: 'hidden'}}>
             {/* 固定 Sider，宽度随 collapsed 变化 */}
             <Sider
                 style={{
@@ -44,12 +44,12 @@ export default function DocsLayoutClient({
                 }}
             >
                 <Nav
-                    style={{ height: '100%' }}
+                    style={{height: '100%'}}
                     selectedKeys={[pathname]}
                     items={navItems}
                     onSelect={(data) => router.push(data.itemKey as string)}
                     header={{
-                        logo: <IconSemiLogo style={{ fontSize: 36 }} />,
+                        logo: <IconSemiLogo style={{fontSize: 36}}/>,
                         text: 'Semi Design',
                     }}
                     footer={{
@@ -70,20 +70,20 @@ export default function DocsLayoutClient({
                     transition: 'margin-left 0.2s ease', // 可选
                 }}
             >
-                <Header style={{ backgroundColor: 'var(--semi-color-bg-1)' }}>
+                <Header style={{backgroundColor: 'var(--semi-color-bg-1)'}}>
                     <Nav
                         mode="horizontal"
                         footer={
                             <>
                                 <Button
                                     theme="borderless"
-                                    icon={<IconBell size="large" />}
-                                    style={{ color: 'var(--semi-color-text-2)', marginRight: '12px' }}
+                                    icon={<IconBell size="large"/>}
+                                    style={{color: 'var(--semi-color-text-2)', marginRight: '12px'}}
                                 />
                                 <Button
                                     theme="borderless"
-                                    icon={<IconHelpCircle size="large" />}
-                                    style={{ color: 'var(--semi-color-text-2)', marginRight: '12px' }}
+                                    icon={<IconHelpCircle size="large"/>}
+                                    style={{color: 'var(--semi-color-text-2)', marginRight: '12px'}}
                                 />
                                 <Avatar color="orange" size="small">
                                     YJ
@@ -99,6 +99,7 @@ export default function DocsLayoutClient({
                         padding: '24px',
                         backgroundColor: 'var(--semi-color-bg-0)',
                         overflowY: 'auto',
+                        maxWidth: '80%', margin: '0 auto'
                     }}
                 >
                     {children}
@@ -113,12 +114,12 @@ export default function DocsLayoutClient({
                         backgroundColor: 'rgba(var(--semi-grey-0), 1)',
                     }}
                 >
-          <span style={{ display: 'flex', alignItems: 'center' }}>
-            <IconBytedanceLogo size="large" style={{ marginRight: '8px' }} />
+          <span style={{display: 'flex', alignItems: 'center'}}>
+            <IconBytedanceLogo size="large" style={{marginRight: '8px'}}/>
             <span>Copyright © 2019 ByteDance. All Rights Reserved.</span>
           </span>
                     <span>
-            <span style={{ marginRight: '24px' }}>平台客服</span>
+            <span style={{marginRight: '24px'}}>平台客服</span>
             <span>反馈建议</span>
           </span>
                 </Footer>

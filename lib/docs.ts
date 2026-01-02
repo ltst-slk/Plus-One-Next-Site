@@ -10,6 +10,7 @@ export interface DocItem {
     title: string;
 }
 
+export const docsDir = "content/posts/"
 /**
  * 获取目标目录下的 素有 mdx 文件 生成 文档列表
  */
