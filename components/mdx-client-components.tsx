@@ -57,9 +57,11 @@ export const MdxCode = ({ children, className, ...props }: HTMLProps) => {
 
     if (isCodeBlock) {
         const language = className.replace('language-', '');
+        console.log('language', language);
         return (
             <div style={{ margin: '16px 0', border: '1px solid var(--semi-color-border)', borderRadius: '6px', overflow: 'hidden' }}>
                 <CodeHighlight
+                    lineNumber={false}
                     language={language}
                     code={String(children).trim()}
                     showLineNumbers

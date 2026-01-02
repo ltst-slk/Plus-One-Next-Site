@@ -50,7 +50,8 @@ export default function DocsLayoutClient({
                     onSelect={(data) => router.push(data.itemKey as string)}
                     header={{
                         logo: <IconSemiLogo style={{fontSize: 36}}/>,
-                        text: 'Semi Design',
+                        text: 'Plus One',
+                        link: '/'
                     }}
                     footer={{
                         collapseButton: true,

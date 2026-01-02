@@ -37,8 +37,7 @@ export default function HomePage() {
                         <Nav.Header>
                             <IconSemiLogo style={{fontSize: 36}}/>
                         </Nav.Header>
-                        <Nav.Item itemKey="Home" text="主页" icon={<IconHome size="large"/>}/>
-                        <Nav.Item itemKey="Docs" text="文档" icon={<IconArticle size="large"/>}/>
+                        <Nav.Item itemKey="Docs" text="快速开始" link={'/docs/getting-started'} icon={<IconArticle size="large"/>}/>
                         <Nav.Footer>
                             <Button
                                 theme="borderless"
