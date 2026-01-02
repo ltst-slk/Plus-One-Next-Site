@@ -1,5 +1,5 @@
 import {docsDir, getDocsList} from '@/lib/docs';
-import DocsLayoutClient from '@/conponents/DocsLayoutClient';
+import DocsLayoutClient from '@/components/DocsLayoutClient';
 
 /**
  * 获取 docItem List 并 引用 Layout配置
