@@ -1,0 +1,17 @@
+{
+  "Nav": {
+    "docs": "Get Started"
+  },
+  "HomePage": {
+    "banner": "Plus One UI 1.0 is now officially released >",
+    "title": "Connecting Designers and Developers",
+    "subtitle": "A Modern Design System",
+    "description": "Maintained by the Douyin Front-end and UED teams, this modern design system is easy to customize and helps designers and developers create high-quality products.",
+    "btnStart": "Quick Start"
+  },
+  "DocsLayout": {
+    "copyright": "Copyright © 2026 Plus One. 保留所有权利。",
+    "customerService": "平台客服",
+    "feedback": "反馈建议"
+  }
+}

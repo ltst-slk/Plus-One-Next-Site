@@ -1,0 +1,92 @@
+---
+title: "Plus One Local Setup Guide"
+date: "2026-01-01"
+---
+# 1. Prerequisites & Environment Setup
+    Install Docker (skip if already installed). The testing environment is **Ubuntu 25.10**, installation via the **1ms.run** script.
+## 1.1 Docker Installation Please refer to the <a href="1ms.run" target="_blank" rel="noopener">1ms Mirror - Docker Installation Docs</a>, and execute the following one-click script:
+
+```shell
+# Gain root privileges
+sudo -i
+
+# Execute the installation script
+bash <(curl -f -s --connect-timeout 10 --retry 3 linuxmirrors.cn) \
+  --source mirrors.tencent.com --source-registry docker.1ms.run --protocol https \
+  --install-latested true --close-firewall false --ignore-backup-tips
+```
+### Script Configuration When running the script, select "Public Network" (公网) for the network environment.
+![公网选择界面](/started/docker-network.png)
+### Installation Result
+![Docker 成功安装](/started/docker-success.png)
+
+## 1.2 Setup PostgreSQL and Redis Databases
+
+```shell
+# Run PostgreSQL 17.5: User: postgres, Password: 123456, DB: plus_one_base
+docker run -d --restart=always --name base-db -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=123456 -e POSTGRES_DB=plus_one_base docker.1ms.run/library/postgres:17.5
+
+# Run Redis 7.2: Password: 123456
+docker run -d --restart=always --name base-redis -p 6379:6379 -e REDIS_PASSWORD=123456 docker.1ms.run/redis:7.2 redis-server --requirepass 123456
+```
+
+### Clone Source Code & Obtain Initialization Scripts
+
+```shell
+# Clone Backend Repository
+git clone https://gitee.com/lkShi/plus-one-system.git
+
+# Clone Frontend Repository
+git clone https://gitee.com/lkShi/plus-one-ui.git
+```
+
+#### Locate the file: /plus-one-system/src/main/resources/db-file/init_db.sql
+
+#### Connect to the installed PostgreSQL via DataGrip
+![连接postgres](/started/connect-postgres.png)
+
+#### Execute the init_db.sql file
+![运行初始化脚本](/started/datagrip-exec.png)
+
+# 2. Running the Backend
+## 2.1 Project Execution
+```shell
+# 克隆代码 如前置步骤已克隆可忽略
+git clone https://gitee.com/lkShi/plus-one-system.git
+```
+### Open the backend project directory in IntelliJ IDEA. It will automatically resolve the Maven POM file.
+
+### Locate PlusOneSystemApplication and click Run.
+![运行SpringBoot](/started/run-application.png)
+
+# 3. Running the Frontend
+## 3.1 Install nvm & Node.js
+请参考<a href="https://nvm.uihtm.com/doc/install.html" target="_blank" rel="noopener">nvm官网</a>
+Please refer to the nvm official website. For Linux/macOS, it is recommended to install via brew.
+### 安装nvm后 安装 node 20
+```shell
+nvm install 20
+nvm list
+```
+![nvm安装node20](/started/nvm-install.png)
+
+## 3.2 Build and Run via WebStorm
+Open the Plus-one-ui project, open the terminal, and install yarn:
+```shell
+npm install -g yarn
+```
+![npm安装yarn](/started/install-yarn.png)
+
+Launch Development Server
+```shell
+# 依赖安装
+yarn
+# 本地运行
+yarn dev
+```
+![成功运行](/started/run-front.png)
+
+# 4. Accessing the System
+## 4.1 Browser Access <a href="http://localhost:5173" target="_blank" rel="noopener">Run Localhost</a>
+## 4.2 Authentication Enter Username admin, Password 123456, and check the User Agreement
+![成功登陆](/started/login-success.png)

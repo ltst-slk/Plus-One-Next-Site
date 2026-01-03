@@ -1,0 +1,17 @@
+{
+  "Nav": {
+    "docs": "快速开始"
+  },
+  "HomePage": {
+    "banner": "Plus One UI 1.0 已全新发布 >",
+    "title": "连接设计师与开发者",
+    "subtitle": "现代化设计系统",
+    "description": "由抖音前端与 UED 团队维护，帮助打造高质量产品。",
+    "btnStart": "快速开始挑战"
+  },
+  "DocsLayout": {
+    "copyright": "Copyright © 2026 Plus One. 保留所有权利。",
+    "customerService": "平台客服",
+    "feedback": "反馈建议"
+  }
+}
