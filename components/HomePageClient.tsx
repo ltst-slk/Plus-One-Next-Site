@@ -2,9 +2,9 @@
 
 import React from 'react';
 import {useTranslations} from 'next-intl';
-// 导入 Semi UI 组件
-import {Banner, Button, Col, Layout, Row, Space, Typography} from '@douyinfe/semi-ui';
+import {Banner, Button, Card, Col, Layout, Row, Space, Typography} from '@douyinfe/semi-ui';
 import Navigation, {useIsMounted} from './Navigation';
+import {usePathname, useRouter} from 'next/navigation'
 
 
 /**
@@ -14,40 +14,81 @@ import Navigation, {useIsMounted} from './Navigation';
 export default function HomePageClient() {
     const t = useTranslations('HomePage');
     const isMounted = useIsMounted();
-
+    const router = useRouter();
     // 在服务端或挂载前，渲染一个简单的占位符，避免 Class Component 报错
     if (!isMounted) {
-        return <div style={{ minHeight: '100vh' }}>Loading...</div>;
+        return <div style={{minHeight: '100vh'}}>Loading...</div>;
     }
 
-    const { Header, Footer, Content } = Layout;
-    const { Text } = Typography;
+    const {Header, Footer, Content} = Layout;
+    const {Text} = Typography;
 
     return (
-        <Layout style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
-            <Banner type="success" description={t('banner')} style={{ padding: '5px' }} closeIcon={null} />
-            <Header style={{ backgroundColor: 'var(--semi-color-bg-1)' }}>
-                <Navigation />
+        <Layout style={{height: '100vh', display: 'flex', flexDirection: 'column'}}>
+            <Card
+                bordered={false}
+                headerLine={false}
+                bodyStyle={{padding: 0}}
+                style={{padding: 0, borderRadius: 0}}
+            >
+                <Banner type="success" description={<Text>{t('banner')}</Text>} style={{padding: '5px'}}
+                        closeIcon={null}/>
+            </Card>
+            <Header style={{backgroundColor: 'var(--semi-color-bg-1)'}}>
+                <Navigation/>
             </Header>
-            <Content style={{ padding: '24px', flex: 1, overflow: 'auto' }}>
-                <Row gutter={24} type="flex" justify="space-around" align="middle">
-                    <Col span={6} offset={1}>
-                        <Space vertical align="start">
-                            <Text style={{margin: '8px 0',fontSize:'48px',fontWeight:600,lineHeight:'67px'}}>{t('title')}</Text>
-                            <Text style={{margin: '8px 0',fontSize:'18px',lineHeight:'32px'}}>{t('subtitle')}</Text>
-                            <Text style={{margin: '8px 0',fontSize:'18px',lineHeight:'32px'}}>{t('description')}</Text>
-                        </Space>
-                        <Space align="center" style={{ marginTop: '20px' }}>
-                            <Button theme='solid' type='primary' size='large'>{t('btnStart')}</Button>
-                        </Space>
-                    </Col>
-                    <Col span={16} offset={1}>
-                        <img src="/screenshot.png" alt="preview" style={{ width: '100%', borderRadius: '10px' }} />
-                    </Col>
-                </Row>
+            <Content>
+                <Card
+                    bordered={false}
+                    headerLine={false}
+                    style={{padding: '24px', flex: 1, overflow: 'auto', borderRadius: 0, height: '100%'}}
+                >
+                    <Row gutter={24} type="flex" justify="space-around" align="middle">
+                        <Col span={6} offset={1}>
+                            <Space vertical align="start">
+                                <Text style={{
+                                    margin: '8px 0',
+                                    fontSize: '48px',
+                                    fontWeight: 600,
+                                    lineHeight: '67px'
+                                }}>{t('title')}</Text>
+                                <Text style={{
+                                    margin: '8px 0',
+                                    fontSize: '48px',
+                                    fontWeight: 600,
+                                    lineHeight: '67px'
+                                }}>{t('subtitle')}</Text>
+                                <Text style={{
+                                    margin: '8px 0',
+                                    fontSize: '33px',
+                                    lineHeight: '32px'
+                                }}>{t('descLine1')}</Text>
+                                <Text style={{
+                                    margin: '8px 0',
+                                    fontSize: '18px',
+                                    lineHeight: '32px'
+                                }}>{t('descLine2')}</Text>
+                            </Space>
+                            <Space align="center" style={{marginTop: '20px'}}>
+                                <Button style={{borderRadius: '20px'}} theme='solid' type='primary' size='large' onClick={() => router.push('/docs/getting-started')}>{t('btnStart')}</Button>
+                                <Button style={{borderRadius: '20px'}} theme='solid' type='primary' size='large' onClick={()=>window.open('http://base.plus-one.cn/', '_blank')}>{t('btnPre')}</Button>
+                            </Space>
+                        </Col>
+                        <Col span={16} offset={1}>
+                            <img src="/screenshot.png" alt="preview" style={{width: '100%', borderRadius: '10px'}}/>
+                        </Col>
+                    </Row> </Card>
+
             </Content>
-            <Footer style={{ padding: '10px', textAlign: 'center' }}>
-                Copyright ©2026 Plus One. All Rights Reserved.
+            <Footer>
+                <Card
+                    bordered={false}
+                    headerLine={false}
+                    bodyStyle={{padding: '10px'}}
+                    style={{ borderRadius: 0, textAlign: 'center'}}
+                >
+                    Copyright ©2026 Plus One. All Rights Reserved.
+                </Card>
             </Footer>
         </Layout>
     );

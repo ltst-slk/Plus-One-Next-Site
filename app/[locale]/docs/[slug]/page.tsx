@@ -16,8 +16,6 @@ import {
 } from '@/components/mdx-client-components';
 import {docsDir} from "@/lib/docs";
 
-// 基础路径
-
 async function getPost(locale: string, slug: string) {
     try {
         // 1. 核心改动：路径中加入 locale 维度

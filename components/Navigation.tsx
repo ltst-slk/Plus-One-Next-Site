@@ -1,23 +1,18 @@
 'use client';
 
 import React, {useSyncExternalStore} from 'react';
-import {Button, Nav} from '@douyinfe/semi-ui';
+import {Button, Nav, Typography} from '@douyinfe/semi-ui';
 import {useTranslations} from "next-intl";
-import {
-    IconArticle,
-    IconGithubLogo,
-    IconHelpCircle,
-    IconLanguage,
-    IconMoon,
-    IconSemiLogo,
-    IconSun
-} from "@douyinfe/semi-icons";
+import {IconGithubLogo, IconHelpCircle, IconHome, IconLanguage, IconMoon,} from "@douyinfe/semi-icons";
 import {usePathname, useRouter} from "next/navigation";
 import {useLocale} from "use-intl";
+import {useTheme} from '@/components/ThemeProvider';
+import Logo from "@/components/Logo";
 // ... 其他导入
-
 // 这是一个简单的客户端订阅逻辑
-const emptySubscribe = () => () => {};
+const emptySubscribe = () => () => {
+};
+
 export function useIsMounted() {
     return useSyncExternalStore(
         emptySubscribe,
@@ -31,45 +26,37 @@ export function useIsMounted() {
  * @constructor
  */
 export default function Navigation() {
+    const {theme, setTheme} = useTheme();
     const isMounted = useIsMounted();
     const t = useTranslations('Nav');
     // ... 其他逻辑
     const pathname = usePathname(); // 获取当前路径，例如 "/zh/docs/getting-started"
     const router = useRouter();
     const locale = useLocale();
+    const {Text} = Typography;
     const toggleLanguage = () => {
         // 1. 分割路径
         const segments = pathname.split('/');
-
         // 2. 假设路径格式始终是 /locale/path...
         // segments[0] 是空字符串，segments[1] 是当前语言 'zh' 或 'en'
         const newLocale = locale === 'zh' ? 'en' : 'zh';
         segments[1] = newLocale;
-
         // 3. 拼接新路径
         const newPath = segments.join('/');
-
         // 4. 执行跳转（Next.js 16 会自动处理平滑过渡）
         router.push(newPath);
     };
     // 如果未挂载，返回占位符。这不再触发同步 setState 警告。
-    if (!isMounted) return <div style={{ height: '60px' }} />;
+    if (!isMounted) return <div style={{height: '60px'}}/>;
 
     return (
         <Nav mode="horizontal" defaultSelectedKeys={['Home']}>
             <Nav.Header>
-                <IconSemiLogo style={{fontSize: 36}}/>
+                <Logo href={`/${locale}`} />
             </Nav.Header>
-            <Nav.Item itemKey="Docs" text="快速开始" link={'/docs/getting-started'} icon={<IconArticle size="large"/>}/>
+            <Nav.Item itemKey="Docs" text={<Text>{t('docs')}</Text>} link={'/docs/getting-started'}/>
+            {/*<Nav.Item itemKey="Docs" text={t('docs')} link={'/docs/getting-started'}/>*/}
             <Nav.Footer>
-                <Button
-                    theme="borderless"
-                    icon={<IconSun size="large"/>}
-                    style={{
-                        color: 'var(--semi-color-text-2)',
-                        marginRight: '8px',
-                    }}
-                />
                 <Button
                     theme="borderless"
                     icon={<IconMoon size="large"/>}
@@ -77,14 +64,18 @@ export default function Navigation() {
                         color: 'var(--semi-color-text-2)',
                         marginRight: '8px',
                     }}
+                    onClick={() => {
+                        setTheme(theme === 'dark' ? 'light' : 'dark');
+                    }}
                 />
                 <Button
                     theme="borderless"
-                    icon={<IconHelpCircle size="large"/>}
+                    icon={<IconHome size="large"/>}
                     style={{
                         color: 'var(--semi-color-text-2)',
                         marginRight: '8px',
                     }}
+                    onClick={()=>window.open('http://base.plus-one.cn/', '_blank')}
                 />
                 <Button
                     theme="borderless"
@@ -93,6 +84,7 @@ export default function Navigation() {
                         color: 'var(--semi-color-text-2)',
                         marginRight: '8px',
                     }}
+                    onClick={()=>window.open('https://gitee.com/lkShi/plus-one-ui', '_blank')}
                 />
                 <Button
                     theme="borderless"

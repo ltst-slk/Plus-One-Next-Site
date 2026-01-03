@@ -1,17 +1,19 @@
 {
   "Nav": {
-    "docs": "Get Started"
+    "docs": "Quick Start"
   },
   "HomePage": {
-    "banner": "Plus One UI 1.0 is now officially released >",
-    "title": "Connecting Designers and Developers",
-    "subtitle": "A Modern Design System",
-    "description": "Maintained by the Douyin Front-end and UED teams, this modern design system is easy to customize and helps designers and developers create high-quality products.",
-    "btnStart": "Quick Start"
+    "banner": "Plus One UI System 1.0 is now live >",
+    "title": "Plus One",
+    "subtitle": "An out-of-the-box full-stack admin scaffold",
+    "descLine1": "Built with Semi.Design, Spring Boot, and React.js",
+    "descLine2": "Get a production-ready, full-stack application up and running in 5 minutes—complete with user roles, audit logs, batch processing, PostgreSQL + Redis integration, and support for both local development and one-click Docker deployment. Clean code, comprehensive docs, fully open source—so you can focus on your business logic, not infrastructure setup.",
+    "btnStart": "Get Started",
+    "btnPre": "View Demo"
   },
   "DocsLayout": {
-    "copyright": "Copyright © 2026 Plus One. 保留所有权利。",
-    "customerService": "平台客服",
-    "feedback": "反馈建议"
+    "copyright": "Copyright © 2026 Plus One. All rights reserved.",
+    "customerService": "Customer Support",
+    "feedback": "Feedback & Suggestions"
   }
 }

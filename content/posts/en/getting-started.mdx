@@ -1,92 +1,115 @@
 ---
-title: "Plus One Local Setup Guide"
+title: "Local Setup Guide"
 date: "2026-01-01"
 ---
-# 1. Prerequisites & Environment Setup
-    Install Docker (skip if already installed). The testing environment is **Ubuntu 25.10**, installation via the **1ms.run** script.
-## 1.1 Docker Installation Please refer to the <a href="1ms.run" target="_blank" rel="noopener">1ms Mirror - Docker Installation Docs</a>, and execute the following one-click script:
+# 1. Basic Environment Setup
+## 1.1 Docker Installation
+If you already have Docker installed, please skip Section 1.1.
 
+The following installation script is provided by 1ms (Millisecond Mirror).<a href="https://1ms.run/docs/1ms.run/" target="_blank" rel="noopener"> For more details,refer to the official documentation</a>:
 ```shell
-# Gain root privileges
+# Obtain root privileges
 sudo -i
 
-# Execute the installation script
-bash <(curl -f -s --connect-timeout 10 --retry 3 linuxmirrors.cn) \
-  --source mirrors.tencent.com --source-registry docker.1ms.run --protocol https \
+# Run the installation script
+bash <(curl -f -s --connect-timeout 10 --retry 3 https://linuxmirrors.cn/docker.sh) \
+  --source mirrors.tencent.com/docker-ce --source-registry docker.1ms.run --protocol https \
   --install-latested true --close-firewall false --ignore-backup-tips
 ```
-### Script Configuration When running the script, select "Public Network" (公网) for the network environment.
-![公网选择界面](/started/docker-network.png)
-### Installation Result
-![Docker 成功安装](/started/docker-success.png)
+Running this script will automatically install Docker with optimized configurations.
 
-## 1.2 Setup PostgreSQL and Redis Databases
+## 1.2 Install PostgreSQL and Redis Databases for Basic Runtime
 
+### 1.2.1 aunch Base Services
 ```shell
-# Run PostgreSQL 17.5: User: postgres, Password: 123456, DB: plus_one_base
-docker run -d --restart=always --name base-db -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=123456 -e POSTGRES_DB=plus_one_base docker.1ms.run/library/postgres:17.5
-
-# Run Redis 7.2: Password: 123456
-docker run -d --restart=always --name base-redis -p 6379:6379 -e REDIS_PASSWORD=123456 docker.1ms.run/redis:7.2 redis-server --requirepass 123456
+# Run base postgres 17.5 image user postgres password 123456
+docker run -d --restart=always --name base-db -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=123456 -e POSTGRES_DB=plus_one_base  docker.1ms.run/library/postgres:17.5
+# Run base redis 7.2 image password 123456
+docker run -d --restart=always --name base-redis -p 6379:6379 -e REDIS_PASSWORD=123456  docker.1ms.run/redis:7.2 redis-server --requirepass 123456
 ```
 
-### Clone Source Code & Obtain Initialization Scripts
+### 1.2.2 Clone Source Code and Retrieve Initialization Script
 
 ```shell
-# Clone Backend Repository
+# Clone the backend repository
 git clone https://gitee.com/lkShi/plus-one-system.git
+# The database initialization SQL script is located at: /plus-one-system/src/main/resources/db-file/init_db.sql
+```
+The database initialization SQL script is located at: /plus-one-system/src/main/resources/db-file/init_db.sql
 
-# Clone Frontend Repository
+### Execute init_db.sql in the PostgreSQL Container from Step 1.2.1
+
+Connect to the running PostgreSQL container (base-db) and run the init_db.sql script to initialize the database schema and seed data.
+
+# 2. Running the Plus-One UI System Backend
+
+## 2.1 Clone the Backend Code (Skip if Already Done)
+
+```shell
+# Clone the Backend Code (Skip if Already Done)
+git clone https://gitee.com/lkShi/plus-one-system.git
+```
+
+## 2.2 Run the Backend via IntelliJ IDEA
+
+Open the project in IntelliJ IDEA.
+
+Locate the main application class: PlusOneSystemApplication.
+
+Click Run to start the Spring Boot backend server.
+
+# 3. Running the Plus-One UI Frontend
+
+## 3.1 Clone the Frontend Code (Skip if Already Done)
+
+```shell
+# Clone the Frontend Code (Skip if Already Done)
 git clone https://gitee.com/lkShi/plus-one-ui.git
 ```
 
-#### Locate the file: /plus-one-system/src/main/resources/db-file/init_db.sql
+## 3.2 Install nvm (Node Version Manager)
 
-#### Connect to the installed PostgreSQL via DataGrip
-![连接postgres](/started/connect-postgres.png)
+Skip this step if you already have Node.js installed.
 
-#### Execute the init_db.sql file
-![运行初始化脚本](/started/datagrip-exec.png)
+Refer to the official nvm installation guide:<a href="https://nvm.uihtm.com/doc/install.html" target="_blank" rel="noopener">ovm Official Documentation</a>
 
-# 2. Running the Backend
-## 2.1 Project Execution
+On Linux or macOS, it's recommended to install nvm via Homebrew:
 ```shell
-# 克隆代码 如前置步骤已克隆可忽略
-git clone https://gitee.com/lkShi/plus-one-system.git
+brew install nvm
 ```
-### Open the backend project directory in IntelliJ IDEA. It will automatically resolve the Maven POM file.
 
-### Locate PlusOneSystemApplication and click Run.
-![运行SpringBoot](/started/run-application.png)
+### 3.2.1 Install Node.js v20
 
-# 3. Running the Frontend
-## 3.1 Install nvm & Node.js
-请参考<a href="https://nvm.uihtm.com/doc/install.html" target="_blank" rel="noopener">nvm官网</a>
-Please refer to the nvm official website. For Linux/macOS, it is recommended to install via brew.
-### 安装nvm后 安装 node 20
+Run the following commands to install and verify Node.js version 20:
+
 ```shell
 nvm install 20
 nvm list
 ```
-![nvm安装node20](/started/nvm-install.png)
+## 3.3 Run the Frontend Application
 
-## 3.2 Build and Run via WebStorm
-Open the Plus-one-ui project, open the terminal, and install yarn:
+Navigate to the plus-one-ui project directory and execute the following:
+
 ```shell
+# Install Yarn globally (if not already installed)
 npm install -g yarn
 ```
-![npm安装yarn](/started/install-yarn.png)
 
-Launch Development Server
+Then install dependencies and start the development server:
+
 ```shell
-# 依赖安装
+# Install project dependencies
 yarn
-# 本地运行
+# Start local development server
 yarn dev
 ```
-![成功运行](/started/run-front.png)
+# 4. Access the Application
+Open your browser and go to:
 
-# 4. Accessing the System
-## 4.1 Browser Access <a href="http://localhost:5173" target="_blank" rel="noopener">Run Localhost</a>
-## 4.2 Authentication Enter Username admin, Password 123456, and check the User Agreement
-![成功登陆](/started/login-success.png)
+<a href="http://localhost:5173" target="_blank" rel="noopener">Local Development URL</a>
+
+Log in using the following credentials:
+
+Username: admin
+
+Password: 123456

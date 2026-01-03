@@ -1,6 +1,9 @@
 import {Providers} from '@/components/Providers';
 import '../globals.css'
+import { Inter } from 'next/font/google';
 
+
+const inter = Inter({ subsets: ['latin'] });
 export default async function LocaleLayout({
                                                children,
                                                params
@@ -21,7 +24,7 @@ export default async function LocaleLayout({
 
     return (
         <html lang={locale}>
-        <body>
+        <body className={inter.className}>
         <Providers locale={locale} messages={messages}>
             {children}
         </Providers>

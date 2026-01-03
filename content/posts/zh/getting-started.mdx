@@ -1,10 +1,12 @@
 ---
-title: "Plus One 本地运行指南"
+title: "本地运行指南"
 date: "2026-01-01"
 ---
 # 1. 基础环境安装
-    安装 docker 如已安装可跳过 ， 安装系统为 Ubuntu 25.10 ， 通过 1ms 脚本进行安装
-## 1.1 请参考<a href="https://1ms.run/docs/1ms.run/" target="_blank" rel="noopener">毫秒镜像 - 安装 Docker 文档</a>，并执行以下一键安装脚本：
+## 1.1 Docker 安装
+如果您已安装 Docker,请跳过步骤 1.1
+
+以下安装脚本为 1ms 毫秒镜像脚本 <a href="https://1ms.run/docs/1ms.run/" target="_blank" rel="noopener">毫秒镜像 - 安装 Docker 文档</a>：
 
 ```shell
 # 获取权限
@@ -15,13 +17,11 @@ bash <(curl -f -s --connect-timeout 10 --retry 3 https://linuxmirrors.cn/docker.
   --source mirrors.tencent.com/docker-ce --source-registry docker.1ms.run --protocol https \
   --install-latested true --close-firewall false --ignore-backup-tips
 ```
-### 运行脚本 选择公网即可
-![公网选择界面](/started/docker-network.png)
-### 安装完成结果如下
-![Docker 成功安装](/started/docker-success.png)
+运行脚本即可一键安装
 
 ## 1.2 安装基础运行的 PG 以及 Redis 数据库
 
+### 1.2.1 运行基础环境
 ```shell
 # 运行 基础的  postgres 17.5 镜像 用户 postgres 密码 123456
 docker run -d --restart=always --name base-db -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=123456 -e POSTGRES_DB=plus_one_base  docker.1ms.run/library/postgres:17.5
@@ -29,62 +29,58 @@ docker run -d --restart=always --name base-db -p 5432:5432 -e POSTGRES_USER=post
 docker run -d --restart=always --name base-redis -p 6379:6379 -e REDIS_PASSWORD=123456  docker.1ms.run/redis:7.2 redis-server --requirepass 123456
 ```
 
-### 下载代码并获取初始化脚本
+### 1.2.2 克隆代码并获取初始化脚本
 
 ```shell
 # 下载后端 代码
 git clone https://gitee.com/lkShi/plus-one-system.git
-
-# 下载前端 代码
-git clone https://gitee.com/lkShi/plus-one-ui.git
+#脚本位于 /plus-one-system/src/main/resources/db-file/init_db.sql
 ```
+脚本位于 /plus-one-system/src/main/resources/db-file/init_db.sql
 
-#### 打开 /plus-one-system/src/main/resources/db-file/init_db.sql 文件
+### 1.2.3 在 1.2.1 运行的PG数据库中 运行 init_db 脚本
 
-#### 通过 datagrip 连接 刚刚安装的 Postgres
-![连接postgres](/started/connect-postgres.png)
-
-#### 通过 datagrip 运行 init_db.sql 文件
-![运行初始化脚本](/started/datagrip-exec.png)
-
-# 2. 后端代码运行
-## 2.1 克隆代码与运行
+# 2. Plus-One UI System 后端运行
+## 2.1 克隆代码
 ```shell
 # 克隆代码 如前置步骤已克隆可忽略
 git clone https://gitee.com/lkShi/plus-one-system.git
 ```
-### 使用 IDEA 打开代码目录 会自动解析 maven pom 文件 并加载项目
-### 找到 PlusOneSystemApplication 点击运行即可
-![运行SpringBoot](/started/run-application.png)
+## 2.2 通过 IntelliJ IDEA 打开项目
+在 IntelliJ IDEA 中打开项目
+在到本地运行的 application class PlusOneSystemApplication
+点击运行即可运行 springboot 后端服务
 
-# 3. 前端代码运行
-## 3.1 安装 nvm
+# 3. Plus-One UI 前端运行
+## 3.1 克隆代码
+```shell
+# 克隆代码 如前置步骤已克隆可忽略
+git clone https://gitee.com/lkShi/plus-one-ui.git
+```
+## 3.2 安装 nvm
+如已安装 node 请忽略 3.1
 请参考<a href="https://nvm.uihtm.com/doc/install.html" target="_blank" rel="noopener">nvm官网</a>
 如果使用 Linux 以及 macos 建议通过 brew 直接安装
-### 安装nvm后 安装 node 20
+### 3.2.1 安装 node 20
+执行以下脚本 安装 node 20
 ```shell
 nvm install 20
 nvm list
 ```
-![nvm安装node20](/started/nvm-install.png)
-
-## 3.2 通过 WebStorm 打开 Plus-one-ui 项目
-打开控制台 并安装 yarn
+## 3.3 运行前端代码
+在 plus-one-ui 项目目录 打开控制台 并安装 yarn
 ```shell
 npm install -g yarn
 ```
-![npm安装yarn](/started/install-yarn.png)
 
-安装依赖并并运行
+通过以下脚本安装依赖并运行
 ```shell
 # 依赖安装
 yarn
 # 本地运行
 yarn dev
 ```
-![成功运行](/started/run-front.png)
-
 # 4. 访问前端网址并对系统进行访问
-## 4.1 通过浏览器打开 <a href="http://localhost:5173" target="_blank" rel="noopener">本地运行网址</a>
-## 4.2 输入用户名 admin  密码 123456 并勾选用户协议
-![成功登陆](/started/login-success.png)
+通过浏览器打开 <a href="http://localhost:5173" target="_blank" rel="noopener">本地运行网址</a>
+
+输入用户名 admin  密码 123456 并勾选用户协议
