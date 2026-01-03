@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useSyncExternalStore } from 'react';
-import { Nav, Button } from '@douyinfe/semi-ui';
+import React, {useSyncExternalStore} from 'react';
+import {Button, Nav} from '@douyinfe/semi-ui';
 import {useTranslations} from "next-intl";
 import {
     IconArticle,
@@ -26,6 +26,10 @@ export function useIsMounted() {
     );
 }
 
+/**
+ * 首页的 顶部导航栏
+ * @constructor
+ */
 export default function Navigation() {
     const isMounted = useIsMounted();
     const t = useTranslations('Nav');

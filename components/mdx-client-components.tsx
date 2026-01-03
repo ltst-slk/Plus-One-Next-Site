@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react';
-import { Typography, Button, Card, Tag, CodeHighlight } from '@douyinfe/semi-ui';
+import {Button, Card, CodeHighlight, Tag, Typography} from '@douyinfe/semi-ui';
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -23,8 +23,13 @@ export const MdxH4 = (props: HTMLProps) => <Title heading={4} style={{ margin: '
 export const MdxP = (props: HTMLProps) => <Paragraph style={{ lineHeight: '1.6', marginBottom: '1em' }} {...props} />;
 
 /**
- * 修复 TS2769 类型冲突
- * 显式解构出 href, children，剩下的原生属性不直接传给 Text
+ * MDX 加载器， 所有 MDX 内容渲染的 HTML 内容都有指定的渲染方式
+ * @param href
+ * @param children
+ * @param type
+ * @param target
+ * @param rest
+ * @constructor
  */
 export const MdxA = ({
                          href,

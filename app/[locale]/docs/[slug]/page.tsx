@@ -1,17 +1,18 @@
-import { compileMDX } from 'next-mdx-remote/rsc';
-import { promises as fs } from 'fs';
+import {compileMDX} from 'next-mdx-remote/rsc';
+import {promises as fs} from 'fs';
 import path from 'path';
-import { notFound } from 'next/navigation';
+import {notFound} from 'next/navigation';
 import {
+    MdxA,
     MdxButton,
     MdxCard,
-    MdxTag,
     MdxCode,
     MdxH1,
     MdxH2,
     MdxH3,
     MdxH4,
-    MdxP, MdxA
+    MdxP,
+    MdxTag
 } from '@/components/mdx-client-components';
 import {docsDir} from "@/lib/docs";
 

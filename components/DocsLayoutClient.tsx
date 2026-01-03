@@ -1,13 +1,20 @@
 'use client'
 
 import '@douyinfe/semi-ui/dist/css/semi.min.css'
-import { usePathname, useRouter } from 'next/navigation'
-import { Avatar, Button, Layout, Nav } from '@douyinfe/semi-ui';
+import {usePathname, useRouter} from 'next/navigation'
+import {Button, Layout, Nav} from '@douyinfe/semi-ui';
 import {IconBell, IconBytedanceLogo, IconFile, IconHelpCircle, IconLanguage, IconSemiLogo} from '@douyinfe/semi-icons';
-import { DocItem } from "@/lib/docs";
-import React, { useState, useMemo } from 'react';
-import { useTranslations, useLocale } from 'next-intl'; // 👈 引入国际化 Hook
+import {DocItem} from "@/lib/docs";
+import React, {useMemo, useState} from 'react';
+import {useLocale, useTranslations} from 'next-intl'; // 👈 引入国际化 Hook
 
+
+/**
+ * 文档 layout 封装页
+ * @param children
+ * @param docs
+ * @constructor
+ */
 export default function DocsLayoutClient({
                                              children,
                                              docs

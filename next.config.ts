@@ -1,4 +1,4 @@
-import { NextConfig } from 'next';
+import {NextConfig} from 'next';
 import createMDX from '@next/mdx';
 
 // 1. 初始化 MDX 插件

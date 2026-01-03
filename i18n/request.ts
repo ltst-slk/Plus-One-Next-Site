@@ -1,10 +1,13 @@
 // i18n/request.ts
-import { getRequestConfig } from 'next-intl/server';
-import { notFound } from 'next/navigation';
+import {getRequestConfig} from 'next-intl/server';
+import {notFound} from 'next/navigation';
 
 // 定义支持的语言列表
 const locales = ['zh', 'en'];
 
+/**
+ * i18n 配置加载
+ */
 export default getRequestConfig(async ({ locale }) => {
     // 1. 验证 locale 是否存在且合法
     if (!locale || !locales.includes(locale)) {

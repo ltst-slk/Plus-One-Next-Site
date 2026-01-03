@@ -1,12 +1,16 @@
 'use client';
 
 import React from 'react';
-import { useTranslations } from 'next-intl';
+import {useTranslations} from 'next-intl';
 // 导入 Semi UI 组件
-import { Banner, Button, Col, Layout, Row, Space, Typography } from '@douyinfe/semi-ui';
+import {Banner, Button, Col, Layout, Row, Space, Typography} from '@douyinfe/semi-ui';
 import Navigation, {useIsMounted} from './Navigation';
 
 
+/**
+ * 首页客户端 封装页面
+ * @constructor
+ */
 export default function HomePageClient() {
     const t = useTranslations('HomePage');
     const isMounted = useIsMounted();

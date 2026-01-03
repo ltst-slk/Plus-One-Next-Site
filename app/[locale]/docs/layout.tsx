@@ -1,4 +1,4 @@
-import { getDocsList } from '@/lib/docs';
+import {getDocsList} from '@/lib/docs';
 import DocsLayoutClient from '@/components/DocsLayoutClient';
 
 /**
