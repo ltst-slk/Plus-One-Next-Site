@@ -5,6 +5,7 @@ import {useTranslations} from 'next-intl';
 import {Banner, Button, Card, CardGroup, Col, Divider, Layout, Row, Space, Typography} from '@douyinfe/semi-ui';
 import Navigation, {useIsMounted} from './Navigation';
 import {usePathname, useRouter} from 'next/navigation'
+import {useTheme} from "@/components/ThemeProvider";
 
 
 /**
@@ -12,6 +13,7 @@ import {usePathname, useRouter} from 'next/navigation'
  * @constructor
  */
 export default function HomePageClient() {
+    const { theme } = useTheme();
     const t = useTranslations('HomePage');
     const isMounted = useIsMounted();
     const router = useRouter();
@@ -22,6 +24,7 @@ export default function HomePageClient() {
 
     const {Header, Footer, Content} = Layout;
     const {Text , Title} = Typography;
+    const src = theme === 'dark' ? '/screenshot_dark.jpg' : '/screenshot_light.jpg';
 
     return (
         <Layout style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
@@ -74,8 +77,18 @@ export default function HomePageClient() {
                                 <Button style={{borderRadius: '20px'}} theme='solid' type='primary' size='large' onClick={()=>window.open('http://base.plus-one.cn/', '_blank')}>{t('btnPre')}</Button>
                             </Space>
                         </Col>
-                        <Col span={16} offset={1}>
-                            <img src="/screenshot.png" alt="preview" style={{width: '100%', borderRadius: '10px'}}/>
+                        <Col span={16} offset={1} >
+                            <div>
+                                <img
+                                    src={src}
+                                    alt="preview"
+                                    style={{
+                                        width: '100%',
+                                        borderRadius: '10px',
+                                        border: theme === 'dark' ?'2px dashed #fff' : '2px dashed #000' // 虚线边框样式，颜色为黑色，宽度为2px
+                                    }}
+                                />
+                            </div>
                         </Col>
                     </Row>
                     <Divider margin='24px' style={{paddingTop: '52px'}}/>
