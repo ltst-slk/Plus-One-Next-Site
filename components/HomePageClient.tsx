@@ -24,12 +24,12 @@ export default function HomePageClient() {
     const {Text} = Typography;
 
     return (
-        <Layout style={{height: '100vh', display: 'flex', flexDirection: 'column'}}>
+        <Layout style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             <Card
                 bordered={false}
                 headerLine={false}
                 bodyStyle={{padding: 0}}
-                style={{padding: 0, borderRadius: 0}}
+                style={{padding: 0, borderRadius: 0,minHeight: '20px'}}
             >
                 <Banner type="success" description={<Text>{t('banner')}</Text>} style={{padding: '5px'}}
                         closeIcon={null}/>
