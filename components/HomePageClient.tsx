@@ -104,24 +104,24 @@ export default function HomePageClient() {
                         </Col>
                     </Row>
                     <Divider margin='24px'/>
-                    {/*<div style={{paddingLeft: '25%' ,paddingRight: '25%'}}>*/}
-                    {/*    <div style={{padding: '5%'}}>*/}
-                    {/*        <Row type="flex" justify="space-around" align="middle">*/}
-                    {/*            <Col span={24} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>*/}
-                    {/*                <Text style={{ margin: '8px 0', fontSize: '48px',fontWeight: 600, lineHeight: '67px'}}>Plus One 适合谁</Text>*/}
-                    {/*            </Col>*/}
-                    {/*        </Row>*/}
-                    {/*        <div style={{paddingTop: '52px'}}>*/}
-                    {/*            <Card style={{height:'300px'}}>*/}
-                    {/*                企业人员*/}
-                    {/*            </Card>*/}
-                    {/*        </div>*/}
-                    {/*        <div style={{paddingTop: '52px'}}>*/}
-                    {/*            <Card style={{height:'300px'}}>*/}
-                    {/*                在校学生*/}
-                    {/*            </Card>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
+                    <div style={{paddingLeft: '25%' ,paddingRight: '25%'}}>
+                        <div style={{padding: '5%'}}>
+                            <Row type="flex" justify="space-around" align="middle">
+                                <Col span={24} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                    <Text style={{ margin: '8px 0', fontSize: '48px',fontWeight: 600, lineHeight: '67px'}}>Plus One 适合谁</Text>
+                                </Col>
+                            </Row>
+                            <div style={{paddingTop: '52px'}}>
+                                <Card style={{height:'300px'}}>
+                                    企业人员
+                                </Card>
+                            </div>
+                            <div style={{paddingTop: '52px'}}>
+                                <Card style={{height:'300px'}}>
+                                    在校学生
+                                </Card>
+                            </div>
+                        </div>
 
                     {/*    <Divider margin='24px'/>*/}
                     {/*    <div style={{padding: '5%'}}>*/}
@@ -197,7 +197,7 @@ export default function HomePageClient() {
                     {/*            </Col>*/}
                     {/*        </Row>*/}
                     {/*    </div>*/}
-                    {/*</div>*/}
+                    </div>
                 </Card>
             </Content>
             <Footer>
