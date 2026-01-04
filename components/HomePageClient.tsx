@@ -78,7 +78,7 @@ export default function HomePageClient() {
                             <img src="/screenshot.png" alt="preview" style={{width: '100%', borderRadius: '10px'}}/>
                         </Col>
                     </Row>
-                    <Divider margin='24px'/>
+                    <Divider margin='24px' style={{paddingTop: '52px'}}/>
                     <Row type="flex" justify="space-around" align="middle">
                         <Col span={8} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             <Text style={{ margin: '8px 0', fontSize: '33px', lineHeight: '42px'}}>Semi.Design</Text>
@@ -91,93 +91,99 @@ export default function HomePageClient() {
                         </Col>
                     </Row>
                     <Divider margin='24px'/>
-                    <div style={{paddingLeft: '5%',paddingRight: '5%'}}>
-                        <Row type="flex" justify="space-around" align="middle">
-                            <Col span={24} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                <Text style={{ margin: '8px 0', fontSize: '33px', lineHeight: '42px'}}>Plus One 适合谁</Text>
-                            </Col>
-                        </Row>
-                        <div style={{paddingTop: '52px'}}>
-                            <Card style={{height:'300px'}}>
-                                企业人员
-                            </Card>
-                        </div>
-                        <div style={{paddingTop: '52px'}}>
-                            <Card style={{height:'300px'}}>
-                                在校学生
-                            </Card>
+                    <div style={{paddingLeft: '25%' ,paddingRight: '25%'}}>
+                        <div style={{padding: '5%'}}>
+                            <Row type="flex" justify="space-around" align="middle">
+                                <Col span={24} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                    <Text style={{ margin: '8px 0', fontSize: '48px',fontWeight: 600, lineHeight: '67px'}}>Plus One 适合谁</Text>
+                                </Col>
+                            </Row>
+                            <div style={{paddingTop: '52px'}}>
+                                <Card style={{height:'300px'}}>
+                                    企业人员
+                                </Card>
+                            </div>
+                            <div style={{paddingTop: '52px'}}>
+                                <Card style={{height:'300px'}}>
+                                    在校学生
+                                </Card>
+                            </div>
                         </div>
 
                         <Divider margin='24px'/>
-                        <Row type="flex" justify="space-around" align="middle">
-                            <Col span={24} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                <Text style={{ margin: '8px 0', fontSize: '33px', lineHeight: '42px'}}>先进的开发体验</Text>
-                            </Col>
-                        </Row>
-                        <Row gutter={[16, 16]}>
-                            <Col span={8} >
-                                <Card title='Card Title' style={{height:'300px'}}>
-                                    Card Content
-                                </Card>
-                            </Col>
-                            <Col span={8}>
-                                <Card title='Card Title' style={{height:'300px'}}>
-                                    Card Content
-                                </Card>
-                            </Col>
-                            <Col span={8}>
-                                <Card title='Card Title' style={{height:'300px'}}>
-                                    Card Content
-                                </Card>
-                            </Col>
-                        </Row>
-                        <Row gutter={[16, 16]}>
-                            <Col span={8}>
-                                <Card title='Card Title' style={{height:'300px'}}>
-                                    Card Content
-                                </Card>
-                            </Col>
-                            <Col span={8}>
-                                <Card title='Card Title' style={{height:'300px'}}>
-                                    Card Content
-                                </Card>
-                            </Col>
-                            <Col span={8}>
-                                <Card title='Card Title' style={{height:'300px'}}>
-                                    Card Content
-                                </Card>
-                            </Col>
-                        </Row>
-                        <Row gutter={[16, 16]}>
-                            <Col span={8}>
-                                <Card title='Card Title' style={{height:'300px'}}>
-                                    Card Content
-                                </Card>
-                            </Col>
-                            <Col span={8}>
-                                <Card title='Card Title' style={{height:'300px'}}>
-                                    Card Content
-                                </Card>
-                            </Col>
-                            <Col span={8}>
-                                <Card title='Card Title' style={{height:'300px'}}>
-                                    Card Content
-                                </Card>
-                            </Col>
-                        </Row>
+                        <div style={{padding: '5%'}}>
+                            <Row type="flex" justify="space-around" align="middle">
+                                <Col span={24} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                    <Text style={{ margin: '8px 0', fontSize: '48px',fontWeight: 600, lineHeight: '67px'}}>先进的开发体验</Text>
+                                </Col>
+                            </Row>
+                            <Row gutter={[16, 16]}>
+                                <Col span={8} >
+                                    <Card title='Card Title' style={{height:'300px'}}>
+                                        Card Content
+                                    </Card>
+                                </Col>
+                                <Col span={8}>
+                                    <Card title='Card Title' style={{height:'300px'}}>
+                                        Card Content
+                                    </Card>
+                                </Col>
+                                <Col span={8}>
+                                    <Card title='Card Title' style={{height:'300px'}}>
+                                        Card Content
+                                    </Card>
+                                </Col>
+                            </Row>
+                            <Row gutter={[16, 16]}>
+                                <Col span={8}>
+                                    <Card title='Card Title' style={{height:'300px'}}>
+                                        Card Content
+                                    </Card>
+                                </Col>
+                                <Col span={8}>
+                                    <Card title='Card Title' style={{height:'300px'}}>
+                                        Card Content
+                                    </Card>
+                                </Col>
+                                <Col span={8}>
+                                    <Card title='Card Title' style={{height:'300px'}}>
+                                        Card Content
+                                    </Card>
+                                </Col>
+                            </Row>
+                            <Row gutter={[16, 16]}>
+                                <Col span={8}>
+                                    <Card title='Card Title' style={{height:'300px'}}>
+                                        Card Content
+                                    </Card>
+                                </Col>
+                                <Col span={8}>
+                                    <Card title='Card Title' style={{height:'300px'}}>
+                                        Card Content
+                                    </Card>
+                                </Col>
+                                <Col span={8}>
+                                    <Card title='Card Title' style={{height:'300px'}}>
+                                        Card Content
+                                    </Card>
+                                </Col>
+                            </Row>
+                        </div>
                         <Divider margin='24px'/>
-                        <Row gutter={[16, 16]}>
-                            <Col span={12} >
-                                <Card title='Card Title' style={{height:'300px'}}>
-                                    完全开源
-                                </Card>
-                            </Col>
-                            <Col span={12}>
-                                <Card title='Card Title' style={{height:'300px'}}>
-                                    构建现代化
-                                </Card>
-                            </Col>
-                        </Row>
+                        <div style={{padding: '5%'}}>
+                            <Row gutter={[16, 16]}>
+                                <Col span={12} >
+                                    <Card title='Card Title' style={{height:'300px'}}>
+                                        完全开源
+                                    </Card>
+                                </Col>
+                                <Col span={12}>
+                                    <Card title='Card Title' style={{height:'300px'}}>
+                                        构建现代化
+                                    </Card>
+                                </Col>
+                            </Row>
+                        </div>
                     </div>
                 </Card>
             </Content>
