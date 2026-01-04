@@ -1,19 +1,19 @@
 {
   "Nav": {
-    "docs": "Quick Start"
+    "docs": "Get Started"
   },
   "HomePage": {
-    "banner": "Plus One UI System 1.0 is now live >",
+    "banner": "Plus One UI System 1.0 Is Now Live >",
     "title": "Plus One",
-    "subtitle": "An out-of-the-box full-stack admin scaffold",
-    "descLine1": "Built with Semi.Design, Spring Boot, and React.js",
-    "descLine2": "Get a production-ready, full-stack application up and running in 5 minutes—complete with user roles, audit logs, batch processing, PostgreSQL + Redis integration, and support for both local development and one-click Docker deployment. Clean code, comprehensive docs, fully open source—so you can focus on your business logic, not infrastructure setup.",
+    "subtitle": "Full-Stack Admin ",
+    "descLine1": "Semi.Design  Spring  React.js",
+    "descLine2": "Rapidly build production-ready, decoupled front-end and back-end applications. Integrated with PostgreSQL and Redis. Supports local development and one-click Docker deployment—so you can focus on your business logic, not infrastructure.",
     "btnStart": "Get Started",
-    "btnPre": "View Demo"
+    "btnPre": "Live Demo"
   },
   "DocsLayout": {
-    "copyright": "Copyright © 2026 Plus One. All rights reserved.",
-    "customerService": "Customer Support",
-    "feedback": "Feedback & Suggestions"
+    "copyright": "© 2026 Plus One. All rights reserved.",
+    "customerService": "Support",
+    "feedback": "Feedback"
   }
 }

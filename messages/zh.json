@@ -5,9 +5,9 @@
   "HomePage": {
     "banner": "Plus One UI System 1.0 已全新发布 >",
     "title": "Plus One",
-    "subtitle": "开箱即用的全栈管理系统脚手架",
-    "descLine1": "基于Semi.Design,Spring Boot 以及 React.js",
-    "descLine2": "全栈开箱即用，5分钟极速搭建前后端分离的生产级应用——内置用户权限、日志审计、批处理等核心模块，集成PostgreSQL与Redis，支持本地开发与Docker一键部署，代码清晰文档完备，完全开源，让你专注业务开发，无需再为环境搭建焦头烂额。",
+    "subtitle": "全栈管理系统脚手架",
+    "descLine1": "Semi.Design Spring React.js",
+    "descLine2": "极速搭建前后端分离的生产级应用,集成PostgreSQL与Redis，支持本地开发与Docker一键部署，让你专注业务开发，无需再为环境搭建焦头烂额。",
     "btnStart": "一起开始把",
     "btnPre": "查看演示"
   },

@@ -50,8 +50,8 @@ export default function Navigation() {
     if (!isMounted) return <div style={{height: '60px'}}/>;
 
     return (
-        <Nav mode="horizontal" defaultSelectedKeys={['Home']}>
-            <Nav.Header>
+        <Nav mode="horizontal" defaultSelectedKeys={['Home']} >
+            <Nav.Header >
                 <Logo href={`/${locale}`} />
             </Nav.Header>
             <Nav.Item itemKey="Docs" text={<Text>{t('docs')}</Text>} link={'/docs/getting-started'}/>

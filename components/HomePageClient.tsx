@@ -34,7 +34,7 @@ export default function HomePageClient() {
                 <Banner type="success" description={<Text>{t('banner')}</Text>} style={{padding: '5px'}}
                         closeIcon={null}/>
             </Card>
-            <Header style={{backgroundColor: 'var(--semi-color-bg-1)'}}>
+            <Header style={{backgroundColor: 'var(--semi-color-bg-1)',paddingLeft:'calc(4.16667% + 24px)',paddingRight:'24px'}}>
                 <Navigation/>
             </Header>
             <Content>
@@ -61,7 +61,7 @@ export default function HomePageClient() {
                                 <Text style={{
                                     margin: '8px 0',
                                     fontSize: '33px',
-                                    lineHeight: '32px'
+                                    lineHeight: '42px'
                                 }}>{t('descLine1')}</Text>
                                 <Text style={{
                                     margin: '8px 0',
