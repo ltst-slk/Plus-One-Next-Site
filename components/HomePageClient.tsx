@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {useTranslations} from 'next-intl';
-import {Banner, Button, Card, Col, Layout, Row, Space, Typography} from '@douyinfe/semi-ui';
+import {Banner, Button, Card, CardGroup, Col, Divider, Layout, Row, Space, Typography} from '@douyinfe/semi-ui';
 import Navigation, {useIsMounted} from './Navigation';
 import {usePathname, useRouter} from 'next/navigation'
 
@@ -21,7 +21,7 @@ export default function HomePageClient() {
     }
 
     const {Header, Footer, Content} = Layout;
-    const {Text} = Typography;
+    const {Text , Title} = Typography;
 
     return (
         <Layout style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
@@ -77,8 +77,109 @@ export default function HomePageClient() {
                         <Col span={16} offset={1}>
                             <img src="/screenshot.png" alt="preview" style={{width: '100%', borderRadius: '10px'}}/>
                         </Col>
-                    </Row> </Card>
+                    </Row>
+                    <Divider margin='24px'/>
+                    <Row type="flex" justify="space-around" align="middle">
+                        <Col span={8} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <Text style={{ margin: '8px 0', fontSize: '33px', lineHeight: '42px'}}>Semi.Design</Text>
+                        </Col>
+                        <Col span={8} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <Text style={{ margin: '8px 0', fontSize: '33px', lineHeight: '42px'}}>Spring Boot</Text>
+                        </Col>
+                        <Col span={8} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <Text style={{ margin: '8px 0', fontSize: '33px', lineHeight: '42px'}}>React</Text>
+                        </Col>
+                    </Row>
+                    <Divider margin='24px'/>
+                    <div style={{paddingLeft: '5%',paddingRight: '5%'}}>
+                        <Row type="flex" justify="space-around" align="middle">
+                            <Col span={24} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                <Text style={{ margin: '8px 0', fontSize: '33px', lineHeight: '42px'}}>Plus One 适合谁</Text>
+                            </Col>
+                        </Row>
+                        <div style={{paddingTop: '52px'}}>
+                            <Card style={{height:'300px'}}>
+                                企业人员
+                            </Card>
+                        </div>
+                        <div style={{paddingTop: '52px'}}>
+                            <Card style={{height:'300px'}}>
+                                在校学生
+                            </Card>
+                        </div>
 
+                        <Divider margin='24px'/>
+                        <Row type="flex" justify="space-around" align="middle">
+                            <Col span={24} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                <Text style={{ margin: '8px 0', fontSize: '33px', lineHeight: '42px'}}>先进的开发体验</Text>
+                            </Col>
+                        </Row>
+                        <Row gutter={[16, 16]}>
+                            <Col span={8} >
+                                <Card title='Card Title' style={{height:'300px'}}>
+                                    Card Content
+                                </Card>
+                            </Col>
+                            <Col span={8}>
+                                <Card title='Card Title' style={{height:'300px'}}>
+                                    Card Content
+                                </Card>
+                            </Col>
+                            <Col span={8}>
+                                <Card title='Card Title' style={{height:'300px'}}>
+                                    Card Content
+                                </Card>
+                            </Col>
+                        </Row>
+                        <Row gutter={[16, 16]}>
+                            <Col span={8}>
+                                <Card title='Card Title' style={{height:'300px'}}>
+                                    Card Content
+                                </Card>
+                            </Col>
+                            <Col span={8}>
+                                <Card title='Card Title' style={{height:'300px'}}>
+                                    Card Content
+                                </Card>
+                            </Col>
+                            <Col span={8}>
+                                <Card title='Card Title' style={{height:'300px'}}>
+                                    Card Content
+                                </Card>
+                            </Col>
+                        </Row>
+                        <Row gutter={[16, 16]}>
+                            <Col span={8}>
+                                <Card title='Card Title' style={{height:'300px'}}>
+                                    Card Content
+                                </Card>
+                            </Col>
+                            <Col span={8}>
+                                <Card title='Card Title' style={{height:'300px'}}>
+                                    Card Content
+                                </Card>
+                            </Col>
+                            <Col span={8}>
+                                <Card title='Card Title' style={{height:'300px'}}>
+                                    Card Content
+                                </Card>
+                            </Col>
+                        </Row>
+                        <Divider margin='24px'/>
+                        <Row gutter={[16, 16]}>
+                            <Col span={12} >
+                                <Card title='Card Title' style={{height:'300px'}}>
+                                    完全开源
+                                </Card>
+                            </Col>
+                            <Col span={12}>
+                                <Card title='Card Title' style={{height:'300px'}}>
+                                    构建现代化
+                                </Card>
+                            </Col>
+                        </Row>
+                    </div>
+                </Card>
             </Content>
             <Footer>
                 <Card
