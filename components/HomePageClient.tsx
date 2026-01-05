@@ -2,9 +2,9 @@
 
 import React from 'react';
 import {useTranslations} from 'next-intl';
-import {Banner, Button, Card, CardGroup, Col, Divider, Layout, Row, Space, Typography} from '@douyinfe/semi-ui';
+import {Banner, Button, Card, Col, Divider, Layout, Row, Space, Typography} from '@douyinfe/semi-ui';
 import Navigation, {useIsMounted} from './Navigation';
-import {usePathname, useRouter} from 'next/navigation'
+import {useRouter} from 'next/navigation'
 import {useTheme} from "@/components/ThemeProvider";
 
 
