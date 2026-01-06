@@ -64,3 +64,4 @@ export async function getDocContent(locale: string, slug: string) {
         return null;
     }
 }
+
