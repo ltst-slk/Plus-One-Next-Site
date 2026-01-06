@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {useTranslations} from 'next-intl';
-import {Banner, Button, Card, Col, Divider, Layout, MarkdownRender, Row, Space, Typography} from '@douyinfe/semi-ui';
+import {Banner, Button, Card, Col, Divider, Layout, Row, Space, Typography} from '@douyinfe/semi-ui';
 import Navigation, {useIsMounted} from './Navigation';
 import {useRouter} from 'next/navigation'
 import {useTheme} from "@/components/ThemeProvider";
@@ -129,42 +129,90 @@ export default function HomePageClient() {
                                 <Row gutter={24} type="flex" justify="space-around" align="middle">
                                     <Col span={12}>
                                         <Card style={{height: 'auto'}} bordered={false}>
-                                            <MarkdownRender raw={`## 企业人员优势
-
-#### **开箱即用的企业级功能**
-   - 提供完整的用户认证、权限管理、组织架构管理等企业级功能模块
-   - 通过 OneTable 等组件简化了企业级数据展示和交互，减少重复开发工作
-   - 菜单后端配置实现动态加载，适应企业业务变化需求
-
-#### **工程化实践先进**
-   - 采用 TypeScript 保证类型安全，提高代码质量
-   - 集成国际化的 i18n 支持，适应多语言企业环境
-   - 提供 Mock 数据方案，实现前后端分离开发，提高团队协作效率
-
-#### **定制化与扩展性强**
-   - Semi Design 组件库支持主题定制，可匹配企业品牌风格
-   - OneSelect 基于系统配置表动态渲染下拉选项，灵活适应业务变化
-   - 项目结构清晰，便于团队协作和长期维护`}/>
+                                            <Row>
+                                                <Title heading={2} style={{lineHeight:'60px'}}>企业人员优势</Title>
+                                            </Row>
+                                            <Row>
+                                                <Title heading={4} style={{lineHeight:'50px'}}>开箱即用的企业级功能</Title>
+                                            </Row>
+                                            <Row>
+                                                <Text>提供完整的用户认证、权限管理、组织架构管理等企业级功能模块</Text>
+                                            </Row>
+                                            <Row>
+                                                <Text>通过 OneTable 等组件简化了企业级数据展示和交互，减少重复开发工作</Text>
+                                            </Row>
+                                            <Row>
+                                                <Text>菜单后端配置实现动态加载，适应企业业务变化需求</Text>
+                                            </Row>
+                                            <Row>
+                                                <Title heading={4} style={{lineHeight:'50px'}}>工程化实践先进</Title>
+                                            </Row>
+                                            <Row>
+                                                <Text>采用 TypeScript 保证类型安全，提高代码质量</Text>
+                                            </Row>
+                                            <Row>
+                                                <Text>集成国际化的 i18n 支持，适应多语言企业环境</Text>
+                                            </Row>
+                                            <Row>
+                                                <Text>提供 Mock 数据方案，实现前后端分离开发，提高团队协作效率</Text>
+                                            </Row>
+                                            <Row>
+                                                <Title heading={4} style={{lineHeight:'50px'}}>定制化与扩展性强</Title>
+                                            </Row>
+                                            <Row>
+                                                <Text>Semi Design 组件库支持主题定制，可匹配企业品牌风格</Text>
+                                            </Row>
+                                            <Row>
+                                                <Text>OneSelect 基于系统配置表动态渲染下拉选项，灵活适应业务变化</Text>
+                                            </Row>
+                                            <Row>
+                                                <Text>项目结构清晰，便于团队协作和长期维护</Text>
+                                            </Row>
                                         </Card>
                                     </Col>
                                     <Col span={12}>
                                         <Card style={{height: 'auto'}} bordered={false}>
-                                            <MarkdownRender raw={`## 学生党优势
-
-#### **高价值学习资源**
-   - 作为完整的现代企业级后台管理系统，展示了从基础架构到高级功能的实现
-   - 包含 React、TypeScript、Semi Design、Spring Boot 等主流技术栈
-   - 项目文档详细，提供清晰的开发流程和最佳实践
-
-#### **实战项目经验**
-   - 可直接用于课程设计、毕业设计，丰富个人作品集
-   - 项目结构清晰，适合学习和模仿，理解大型项目的组织方式
-   - 提供了从开发到部署的完整流程，帮助学生了解企业级项目生命周期
-
-#### **学习曲线友好**
-   - 使用的 React 和 Semi Design 是目前主流且文档丰富的技术
-   - 项目有明确的快速开始指南，学生可快速上手
-   - 提供了 前后全分离全栈方案`}/>
+                                            <Card style={{height: 'auto'}} bordered={false}>
+                                                <Row>
+                                                    <Title heading={2} style={{lineHeight:'60px'}}>学生党优势</Title>
+                                                </Row>
+                                                <Row>
+                                                    <Title heading={4} style={{lineHeight:'50px'}}>高价值学习资源</Title>
+                                                </Row>
+                                                <Row>
+                                                    <Text>作为完整的现代企业级后台管理系统，展示了从基础架构到高级功能的实现</Text>
+                                                </Row>
+                                                <Row>
+                                                    <Text>包含 React、TypeScript、Semi Design、Spring Boot 等主流技术栈</Text>
+                                                </Row>
+                                                <Row>
+                                                    <Text>项目文档详细，提供清晰的开发流程和最佳实践</Text>
+                                                </Row>
+                                                <Row>
+                                                    <Title heading={4} style={{lineHeight:'50px'}}>实战项目经验</Title>
+                                                </Row>
+                                                <Row>
+                                                    <Text>可直接用于课程设计、毕业设计，丰富个人作品集</Text>
+                                                </Row>
+                                                <Row>
+                                                    <Text>项目结构清晰，适合学习和模仿，理解大型项目的组织方式</Text>
+                                                </Row>
+                                                <Row>
+                                                    <Text>提供了从开发到部署的完整流程，帮助学生了解企业级项目生命周期</Text>
+                                                </Row>
+                                                <Row>
+                                                    <Title heading={4} style={{lineHeight:'50px'}}>学习曲线友好</Title>
+                                                </Row>
+                                                <Row>
+                                                    <Text>使用的 React 和 Semi Design 是目前主流且文档丰富的技术</Text>
+                                                </Row>
+                                                <Row>
+                                                    <Text>项目有明确的快速开始指南，学生可快速上手</Text>
+                                                </Row>
+                                                <Row>
+                                                    <Text>提供了 前后全分离全栈方案</Text>
+                                                </Row>
+                                            </Card>
                                         </Card>
                                     </Col>
                                 </Row>
