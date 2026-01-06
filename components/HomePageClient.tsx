@@ -57,13 +57,13 @@ export default function HomePageClient() {
                                 }}>{t('title')}</Text>
                                 <Text style={{
                                     margin: '8px 0',
-                                    fontSize: '48px',
+                                    fontSize: '35px',
                                     fontWeight: 600,
-                                    lineHeight: '67px'
+                                    lineHeight: '57px'
                                 }}>{t('subtitle')}</Text>
                                 <Text style={{
                                     margin: '8px 0',
-                                    fontSize: '33px',
+                                    fontSize: '25px',
                                     lineHeight: '42px'
                                 }}>{t('descLine1')}</Text>
                                 <Text style={{
