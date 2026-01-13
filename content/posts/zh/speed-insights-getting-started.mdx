@@ -1,0 +1,363 @@
+---
+title: "Speed Insights 入门指南"
+date: "2026-01-03"
+---
+
+# Speed Insights 入门指南
+
+本指南将帮助你在项目中开始使用 Vercel Speed Insights，并展示如何启用它、将包添加到项目中、将应用部署到 Vercel，以及在仪表板中查看数据。
+
+要查看在项目中使用 Vercel Speed Insights 的说明，请使用右侧的**选择框架**下拉菜单（移动视图中在底部）。
+
+## 先决条件
+
+- 一个 Vercel 账户。如果没有，可以[免费注册](https://vercel.com/signup)。
+- 一个 Vercel 项目。如果没有，可以[创建新项目](https://vercel.com/new)。
+- 已安装 Vercel CLI。如果没有，可以使用以下命令安装：
+
+```bash
+pnpm i vercel
+```
+
+或使用 yarn：
+
+```bash
+yarn i vercel
+```
+
+或使用 npm：
+
+```bash
+npm i vercel
+```
+
+或使用 bun：
+
+```bash
+bun i vercel
+```
+
+## 在 Vercel 中启用 Speed Insights
+
+在 [Vercel 仪表板](/dashboard) 上，选择您的项目，然后选择 **Speed Insights** 标签。您也可以选择下面的按钮转到那里。然后，从对话框中选择**启用**。
+
+> **💡 注意：** 启用 Speed Insights 将在下次部署后添加新路由（范围为 `/_vercel/speed-insights/*`）。
+
+## 将 `@vercel/speed-insights` 添加到项目
+
+使用您选择的包管理器，将 `@vercel/speed-insights` 包添加到项目中：
+
+```bash
+pnpm i @vercel/speed-insights
+```
+
+或使用 yarn：
+
+```bash
+yarn i @vercel/speed-insights
+```
+
+或使用 npm：
+
+```bash
+npm i @vercel/speed-insights
+```
+
+或使用 bun：
+
+```bash
+bun i @vercel/speed-insights
+```
+
+**注意：** 使用 HTML 实现时，无需安装 `@vercel/speed-insights` 包。
+
+## 将 `SpeedInsights` 组件添加到应用
+
+### 对于 Next.js (Pages Router)
+
+`SpeedInsights` 组件是跟踪脚本的包装器，提供与 Next.js 的更无缝集成。
+
+将以下组件添加到主应用文件：
+
+```typescript
+// pages/_app.tsx
+import type { AppProps } from 'next/app';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <Component {...pageProps} />
+      <SpeedInsights />
+    </>
+  );
+}
+
+export default MyApp;
+```
+
+对于早于 13.5 的 Next.js 版本，从 `@vercel/speed-insights/react` 导入 `<SpeedInsights>` 组件。然后将路由的路径名传递给它，如下所示：
+
+```typescript
+// pages/example-component.tsx
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import { useRouter } from "next/router";
+
+export default function Layout() {
+  const router = useRouter();
+
+  return <SpeedInsights route={router.pathname} />;
+}
+```
+
+### 对于 Next.js (App Router)
+
+`SpeedInsights` 组件是跟踪脚本的包装器，提供与 Next.js 的更无缝集成。
+
+将以下组件添加到根布局：
+
+```typescript
+// app/layout.tsx
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <head>
+        <title>Next.js</title>
+      </head>
+      <body>
+        {children}
+        <SpeedInsights />
+      </body>
+    </html>
+  );
+}
+```
+
+对于早于 13.5 的 Next.js 版本，从 `@vercel/speed-insights/react` 导入 `<SpeedInsights>` 组件。
+
+创建一个专用组件以避免在布局上选择退出 SSR，并将路由的路径名传递给 `SpeedInsights` 组件：
+
+```typescript
+// app/insights.tsx
+"use client";
+
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import { usePathname } from "next/navigation";
+
+export function Insights() {
+  const pathname = usePathname();
+
+  return <SpeedInsights route={pathname} />;
+}
+```
+
+然后，在布局中导入 `Insights` 组件：
+
+```typescript
+// app/layout.tsx
+import type { ReactNode } from "react";
+import { Insights } from "./insights";
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <title>Next.js</title>
+      </head>
+      <body>
+        {children}
+        <Insights />
+      </body>
+    </html>
+  );
+}
+```
+
+### 对于 Create React App
+
+`SpeedInsights` 组件是跟踪脚本的包装器，提供与 React 的更无缝集成。
+
+将以下组件添加到主应用文件：
+
+```typescript
+// App.tsx
+import { SpeedInsights } from '@vercel/speed-insights/react';
+
+export default function App() {
+  return (
+    <div>
+      {/* ... */}
+      <SpeedInsights />
+    </div>
+  );
+}
+```
+
+### 对于 Remix
+
+`SpeedInsights` 组件是跟踪脚本的包装器，提供与 Remix 的无缝集成。
+
+将以下组件添加到根文件：
+
+```typescript
+// app/root.tsx
+import { SpeedInsights } from '@vercel/speed-insights/remix';
+
+export default function App() {
+  return (
+    <html lang="en">
+      <body>
+        {/* ... */}
+        <SpeedInsights />
+      </body>
+    </html>
+  );
+}
+```
+
+### 对于 SvelteKit
+
+将以下组件添加到根文件：
+
+```typescript
+// src/routes/+layout.ts
+import { injectSpeedInsights } from "@vercel/speed-insights/sveltekit";
+
+injectSpeedInsights();
+```
+
+### 对于 HTML
+
+在 `<body>` 的结束标记之前添加以下脚本：
+
+```html
+<script>
+  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+```
+
+### 对于 Vue
+
+`SpeedInsights` 组件是跟踪脚本的包装器，提供与 Vue 的更无缝集成。
+
+将以下组件添加到主应用模板：
+
+```vue
+<script setup lang="ts">
+import { SpeedInsights } from '@vercel/speed-insights/vue';
+</script>
+
+<template>
+  <SpeedInsights />
+</template>
+```
+
+### 对于 Nuxt
+
+`SpeedInsights` 组件是跟踪脚本的包装器，提供与 Nuxt 的更无缝集成。
+
+将以下组件添加到默认布局：
+
+```vue
+<script setup lang="ts">
+import { SpeedInsights } from '@vercel/speed-insights/vue';
+</script>
+
+<template>
+  <SpeedInsights />
+</template>
+```
+
+### 对于其他框架
+
+从包中导入 `injectSpeedInsights` 函数，它将跟踪脚本添加到应用中。**这应该只在应用中调用一次，并且必须在客户端运行**。
+
+将以下代码添加到主应用文件：
+
+```typescript
+// main.ts
+import { injectSpeedInsights } from "@vercel/speed-insights";
+
+injectSpeedInsights();
+```
+
+### 对于 Astro
+
+Speed Insights 适用于静态和 SSR Astro 应用。
+
+要启用此功能，请在布局组件之一（如 `BaseHead.astro`）中声明来自 `@vercel/speed-insights/astro` 的 `<SpeedInsights />` 组件：
+
+```astro
+---
+import SpeedInsights from '@vercel/speed-insights/astro';
+const { title, description } = Astro.props;
+---
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<SpeedInsights />
+```
+
+或者，您可以通过向全局 `window` 对象添加 `speedInsightsBeforeSend` 函数来从 URL 中删除敏感信息。`<SpeedInsights />` 组件将在将任何数据发送到 Vercel 之前调用此方法：
+
+```astro
+---
+import SpeedInsights from '@vercel/speed-insights/astro';
+const { title, description } = Astro.props;
+---
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<script is:inline>
+  function speedInsightsBeforeSend(data){
+    console.log("Speed Insights before send", data)
+    return data;
+  }
+</script>
+<SpeedInsights />
+```
+
+[了解更多关于 `beforeSend`](/docs/speed-insights/package#beforesend)。
+
+## 将应用部署到 Vercel
+
+您可以通过从终端运行以下命令将应用部署到 Vercel 的全球 CDN：
+
+```bash
+vercel deploy
+```
+
+或者，您可以[连接项目的 git 存储库](/docs/git#deploying-a-git-repository)，这将使 Vercel 能够部署最新的推送和合并到 main。
+
+部署应用后，它就可以开始跟踪性能指标了。
+
+> **💡 注意：** 如果一切设置正确，您应该能够在页面的 body 标记内找到 `/_vercel/speed-insights/script.js` 脚本。
+
+## 在仪表板中查看数据
+
+部署应用并且用户访问过您的网站后，您可以在仪表板中查看数据。
+
+为此，请转到您的[仪表板](/dashboard)，选择您的项目，然后单击 **Speed Insights** 标签。
+
+经过几天的访问者后，您将能够开始探索您的指标。有关如何使用 Speed Insights 的更多信息，请参阅[使用 Speed Insights](/docs/speed-insights/using-speed-insights)。
+
+详细了解 Vercel 如何通过 Vercel Speed Insights 支持[隐私和数据合规标准](/docs/speed-insights/privacy-policy)。
+
+## 后续步骤
+
+现在您已经设置了 Vercel Speed Insights，您可以探索以下主题以了解更多信息：
+
+- [学习如何使用 `@vercel/speed-insights` 包](/docs/speed-insights/package)
+- [了解指标](/docs/speed-insights/metrics)
+- [阅读关于隐私和合规的信息](/docs/speed-insights/privacy-policy)
+- [探索定价](/docs/speed-insights/limits-and-pricing)
+- [故障排除](/docs/speed-insights/troubleshooting)
